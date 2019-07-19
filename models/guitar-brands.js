@@ -1,32 +1,35 @@
-
 const mongoose = require('./connection.js')
 
-const SampleModelSchema = new mongoose.Schema({
+const GuitarBrandSchema = new mongoose.Schema({
   name: String
 })
 
-/* Step 3
- *
- * TODO: create collection API
- * NOTE: skip this if you are not using mongoose
- *
- */
-//const SampleCollection = mongoose.model('Sample', SampleModelSchema)
+const GuitarBrandCollection = mongoose.model('Guitar Brands', GuitarBrandSchema)
 
-/* Step 4
- *
- * TODO: delete this it's just a sample
- *
- */
-function getHelloWorldString() {
-  return 'hello world'
+function getAllGuitarBrands() {
+  return GuitarBrandCollection.find()
 }
 
-/* Step 5
- *
- * TODO: export all functions from this file by adding their names as keys to this
- * object
- */
+function getGuitarBrand(brandId) {
+  return GuitarBrandCollection.findById(brandId)
+}
+
+function addNewGuitarBrand(newBrand) {
+  return GuitarBrandCollection.create(newBrand)
+}
+
+function updateGuitarBrand(brandId, updatedBrand) {
+  return GuitarBrandCollection.findByIdAndUpdate(brandId, updatedBrand, {new: true})
+}
+
+function deleteGuitarBrand(brandId) {
+  return GuitarBrandCollection.findByIdAndDelete(brandId)
+}
+
 module.exports = {
-  getHelloWorldString
+  getAllGuitarBrands,
+  getGuitarBrand,
+  addNewGuitarBrand,
+  updateGuitarBrand,
+  deleteGuitarBrand
 }

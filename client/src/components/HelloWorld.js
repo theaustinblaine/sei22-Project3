@@ -26,7 +26,7 @@ export default class HelloWorld extends Component {
     *   -REMINDER remember `setState` it is an async function
     */
     componentDidMount() {
-        axios.get('/api/helloworld')
+        axios.get('/api/guitars')
             .then((res) => {
                 this.setState({message: res.data})
             })
