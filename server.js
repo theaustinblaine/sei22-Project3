@@ -17,6 +17,7 @@ const app = express()
  *
  */
 const { guitarBrandRouter } = require('./controllers/guitar-brands.js')
+const { guitarModelRouter } = require('./controllers/guitar-models.js')
 
 
 /* Step 3
@@ -49,7 +50,8 @@ app.use(express.static(`${__dirname}/client/build`))
  * add router for the application to use. The first argument is a prefix to all
  * the paths defined in the router.
  */
-app.use('/api/guitars', guitarBrandRouter)
+app.use('/api/brands', guitarBrandRouter)
+app.use('/api/models', guitarModelRouter)
 
 /* Step 5
  *

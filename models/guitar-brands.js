@@ -1,7 +1,7 @@
 const mongoose = require('./connection.js')
 
 const GuitarBrandSchema = new mongoose.Schema({
-  name: String
+  brand: String
 })
 
 const GuitarBrandCollection = mongoose.model('Guitar Brands', GuitarBrandSchema)
