@@ -27,8 +27,8 @@ guitarBrandRouter.get('/:brandId', (req, res) => {
 
 guitarBrandRouter.post('/', (req, res) => {
   guitarBrandApi.addNewGuitarBrand(req.body)
-    .then(() => {
-      res.send('Brand Created!')
+    .then((brand) => {
+      res.json(brand)
     })
     .catch((err) => {
       res.send(err)

@@ -1,48 +1,78 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import NewBrandForm from './NewBrandForm.jsx'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 export default class Brands extends Component {
 
     state = {
         brands: [],
-        isAdminView: false,
+        isAddNewFormDisplayed: false,
         newBrand: {
-            name: String
+            name: ""
         }
     }
 
     componentDidMount() {
+        this.getAllBrands()
+    }
+
+    getAllBrands = () => {
         axios.get(`/api/brands`)
             .then((res) => {
                 this.setState({brands: res.data})
             })
     }
 
-    handleClick = () => {
+    handleClickAddNew = () => {
         this.setState((state) => {
-            return {isAdminView: !state.isAdminView}
+            return {isAddNewFormDisplayed: !state.isAddNewFormDisplayed}
         })
+    }
+
+    handleInputChange = (event) => {
+        const copiedNewBrand = {...this.state.newBrand}
+        copiedNewBrand[event.target.name] = event.target.value
+
+        this.setState({newBrand: copiedNewBrand})
+    }
+
+    handleAddNewForm = (event) => {
+        event.preventDefault()
+
+        axios.post('/api/brands', this.state.newBrand)
+            .then(() => {
+                this.setState({isAddNewFormDisplayed: false})
+                this.getAllBrands()
+            })
     }
 
     render() {
 
         let brandsList = this.state.brands.map((brand) => {
             return (
-                <div>{brand.name}</div>
+                <div>
+                    <Link 
+                        key={brand._id}
+                        to={`/brands/${brand._id}`}
+                    >
+                        {brand.name}
+                    </Link>
+                </div>
             )
         })
 
         return (
-            this.state.isAdminView
+            this.state.isAddNewFormDisplayed
             ? <NewBrandForm 
                 brands={this.state.brands}
                 newBrand={this.state.newBrand}
+                handleInputChange={this.handleInputChange}
+                handleAddNewForm={this.handleAddNewForm}
             />
             : <div>
                 {brandsList}
-                <button onClick={this.handleClick} >Add New Brand</button>
+                <button onClick={this.handleClickAddNew} >Add New Brand</button>
             </div>
         );
     }
