@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import {Redirect, Link} from 'react-router-dom'
 
 export default class SingleBrand extends Component {
 
     state = {
         brand: {},
-        isEditFormDisplayed: false
+        isEditFormDisplayed: false,
+        redirectToHome: false
     }
 
     componentDidMount() {
@@ -40,7 +42,18 @@ export default class SingleBrand extends Component {
             })
     }
 
+    handleDeleteBrand = () => {
+        Axios.delete(`/api/brands/${this.state.brand._id}`)
+            .then(() => {
+                this.setState({redirectToHome: true})
+            })
+    }
+
     render() {
+        if(this.state.redirectToHome) {
+            return <Redirect to='/'/>
+        }
+        
         return (
             this.state.isEditFormDisplayed
             ? <form onSubmit={this.handleSubmitChanges}>
@@ -57,6 +70,7 @@ export default class SingleBrand extends Component {
             :<div>
                 <h1>{this.state.brand.name}</h1>
                 <button onClick={this.handleToggleEditForm}>Edit Brand Name</button>
+                <button onClick={this.handleDeleteBrand}>Delete Brand</button>
             </div>
         );
     }
