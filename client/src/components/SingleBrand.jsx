@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import {Redirect, Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
+import ModelsList from './ModelsList.jsx'
 
 export default class SingleBrand extends Component {
 
     state = {
         brand: {},
         isEditFormDisplayed: false,
-        redirectToHome: false
+        redirectToHome: false,
     }
 
     componentDidMount() {
         Axios.get(`/api/brands/${this.props.match.params.brandId}`)
             .then((res) => {
                 this.setState({brand: res.data})
+            })
+        this.getAllModels()
+    }
+
+    getAllModels() {
+        Axios.get('/api/models/')
+            .then((res) => {
+                this.setState({models: res.data})
             })
     }
 
@@ -53,7 +62,7 @@ export default class SingleBrand extends Component {
         if(this.state.redirectToHome) {
             return <Redirect to='/'/>
         }
-        
+
         return (
             this.state.isEditFormDisplayed
             ? <form onSubmit={this.handleSubmitChanges}>
@@ -71,6 +80,7 @@ export default class SingleBrand extends Component {
                 <h1>{this.state.brand.name}</h1>
                 <button onClick={this.handleToggleEditForm}>Edit Brand Name</button>
                 <button onClick={this.handleDeleteBrand}>Delete Brand</button>
+                <ModelsList />
             </div>
         );
     }
