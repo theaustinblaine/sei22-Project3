@@ -1,7 +1,11 @@
 const mongoose = require('./connection.js')
 
 const GuitarModelSchema = new mongoose.Schema({
-  model: String,
+  model: {
+    type: String,
+    required: true
+  },
+  brand: String,
   price: Number,
   description: String,
   imagelink: String
