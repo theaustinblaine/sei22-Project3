@@ -31,7 +31,13 @@ export default class models extends Component {
         this.setState((state) => {
             return {isAddNewModelFormDisplayed: !state.isAddNewModelFormDisplayed}
         })
-        this.setState({newModel: {brandId: this.props.brand._id}})
+        this.setState({
+            newModel: 
+                {
+                    brandId: this.props.brand._id,
+                    // brand: this.props.brand.name
+                }
+        })
 
     }
 
@@ -52,7 +58,7 @@ export default class models extends Component {
 
     render() {
 
-        let modelsList = this.state.models.map((model) => {
+        let modelsList = this.state.models.filer((brandId) => {
             return  (
                 <div>
                     <h3>
