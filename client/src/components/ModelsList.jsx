@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import Axios from 'axios'
+import NewModelForm from './NewModelForm';
 
 export default class models extends Component {
 
     state = {
-        models: []
+        isAddNewModelFormDisplayed: false,
+        models: [],
+        newModel: {
+            model: "",
+            brandId: "",
+            description: "",
+            price: ""
+        }
     }
 
     componentDidMount() {
@@ -15,6 +23,29 @@ export default class models extends Component {
         Axios.get('/api/models/')
             .then((res) => {
                 this.setState({models: res.data})
+            })
+    }
+
+    handleClickAddNewModelForm = () => {
+        this.setState((state) => {
+            return {isAddNewModelFormDisplayed: !state.isAddNewModelFormDisplayed}
+        })
+        this.setState({newModel: {brandId: this.props.brand._id}})
+
+    }
+
+    handleInputChange = (event) => {
+        const copiedNewModel = {...this.state.newModel}
+        copiedNewModel[event.target.name] = event.target.value
+
+        this.setState({newModel: copiedNewModel})
+    }
+
+    handleAddNewForm = () => {
+        Axios.post('/api/models', this.state.newModel)
+            .then(() => {
+                this.setState({isAddNewModelFormDisplayed: false})
+                this.getAllModels()
             })
     }
 
@@ -31,10 +62,17 @@ export default class models extends Component {
         })
 
         return (
-        <div>
-            {modelsList}
-            <button>Add New Model</button>
-        </div>
+            this.state.isAddNewModelFormDisplayed
+            ? <NewModelForm 
+                models={this.state.models}
+                newModel={this.state.newModel}
+                handleInputChange={this.handleInputChange}
+                handleAddNewForm={this.handleAddNewForm}
+            />
+            : <div>
+                {modelsList}
+                <button onClick={this.handleClickAddNewModelForm}>Add New Model</button>
+            </div>
         );
     }
 }

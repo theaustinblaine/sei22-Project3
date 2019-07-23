@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 
 export default class NewBrandForm extends Component {
     render() {
-
-
-
         return (
         <div>
             <form onSubmit={this.props.handleAddNewForm}>

@@ -28,7 +28,7 @@ guitarModelRouter.get('/:modelId', (req, res) => {
 guitarModelRouter.post('/', (req, res) => {
   guitarModelApi.addGuitarModel(req.body)
     .then((newModel) => {
-      res.send('Model Created')
+      res.json(newModel)
     })
     .catch((err) => {
       res.send(err)

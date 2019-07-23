@@ -80,7 +80,9 @@ export default class SingleBrand extends Component {
                 <h1>{this.state.brand.name}</h1>
                 <button onClick={this.handleToggleEditForm}>Edit Brand Name</button>
                 <button onClick={this.handleDeleteBrand}>Delete Brand</button>
-                <ModelsList />
+                <ModelsList 
+                    brand={this.state.brand}
+                />
             </div>
         );
     }
