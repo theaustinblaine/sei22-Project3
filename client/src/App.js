@@ -4,6 +4,7 @@ import Home from './components/Home.jsx'
 import SingleBrand from './components/SingleBrand'
 import Header from './components/Header.jsx'
 import './App.css';
+import SingleModel from './components/SingleModel.jsx';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/brands/:brandId" component={SingleBrand}/>
+          <Route path="/models/:modelId" component={SingleModel}/>
         </Switch>
       </Router>
     </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios'
 import NewModelForm from './NewModelForm';
+import {Link} from 'react-router-dom'
 
 export default class models extends Component {
 
@@ -54,7 +55,14 @@ export default class models extends Component {
         let modelsList = this.state.models.map((model) => {
             return  (
                 <div>
-                    <h3>{model.model} - {model.price}</h3>
+                    <h3>
+                        <Link 
+                            key={model._id} 
+                            to={`/models/${model._id}`}
+                        >
+                            {model.model} - {model.price}
+                        </Link>
+                    </h3>
                     
                     <p>{model.description}</p>
                 </div>
