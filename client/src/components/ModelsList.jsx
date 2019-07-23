@@ -58,7 +58,7 @@ export default class models extends Component {
 
     render() {
 
-        let modelsList = this.state.models.filer((brandId) => {
+        let modelsList = this.state.models.map((model) => {
             return  (
                 <div>
                     <h3>

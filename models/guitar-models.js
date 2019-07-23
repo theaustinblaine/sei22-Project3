@@ -18,6 +18,10 @@ function getAllGuitarModels() {
   return GuitarModelCollection.find()
 }
 
+// function getModelsByBrandId(brandId) {
+//   return GuitarModelCollection.find(brandId: brandId)
+// }
+
 function getGuitarModel(modelId) {
   return GuitarModelCollection.findById(modelId)
 }
@@ -39,5 +43,6 @@ module.exports = {
   getGuitarModel,
   addGuitarModel,
   updateGuitarModel,
-  deleteGuitarModel
+  deleteGuitarModel,
+  // getModelsByBrandId
 }
