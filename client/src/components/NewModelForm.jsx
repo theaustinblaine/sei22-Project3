@@ -17,7 +17,6 @@ export default class NewModelForm extends Component {
                     type="text"
                     name="model"
                     onChange={this.props.handleInputChange}
-                    value={this.props.model.model}
                 />
                 <label htmlFor="model-price">Price: </label>
                 <input 
@@ -26,7 +25,6 @@ export default class NewModelForm extends Component {
                     id="model-price" 
                     min="0" 
                     onChange={this.props.handleInputChange}
-                    value={this.props.model.price}
                     />
                 <label htmlFor="model-description">Product Description</label>
                 <textarea 
@@ -35,7 +33,7 @@ export default class NewModelForm extends Component {
                     cols="30" 
                     rows="10"
                     onChange={this.props.handleInputChange}
-                >{this.props.model.description}</textarea>
+                ></textarea>
                 <input type="submit" value="Add New Guitar"/> 
             </form>
         </div>

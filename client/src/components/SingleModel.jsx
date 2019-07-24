@@ -11,7 +11,7 @@ export default class SingleModel extends Component {
     }
 
     componentDidMount() {
-        Axios.get(`/api/models/${this.props.match.params.modelId}`)
+        Axios.get(`/api/brands/${this.props.match.params.brandId}/models/${this.props.match.params.modelId}`)
             .then((res) => {
                 this.setState({model: res.data})
             })
@@ -56,14 +56,14 @@ export default class SingleModel extends Component {
 
         return (
             this.state.isEditFormDisplayed
-            ? <form onSubmit={this.handleSumbitChanges}>
+            ? <form onSubmit={this.handleSubmitChanges}>
                 <label htmlFor="model-name">Model: </label>
                 <input 
                     id="model-name"
                     type="text"
                     name="model"
-                    onChange={this.handleInputChange}
                     value={this.state.model.model}
+                    onChange={this.handleInputChange}
                 />
                 <label htmlFor="model-price">Price: </label>
                 <input 
@@ -71,8 +71,8 @@ export default class SingleModel extends Component {
                     name="price" 
                     id="model-price" 
                     min="0" 
-                    onChange={this.handleInputChange}
                     value={this.state.model.price}
+                    onChange={this.handleInputChange}
                     />
                 <label htmlFor="model-description">Product Description</label>
                 <textarea 
@@ -80,8 +80,8 @@ export default class SingleModel extends Component {
                     id="model-description" 
                     cols="30" 
                     rows="10"
-                    onChange={this.handleInputChange}
                     value={this.state.model.description}
+                    onChange={this.handleInputChange}
                 ></textarea>
                 <input type="submit" value="Update Listing"/> 
             </form>

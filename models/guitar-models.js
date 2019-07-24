@@ -18,9 +18,9 @@ function getAllGuitarModels() {
   return GuitarModelCollection.find()
 }
 
-// function getModelsByBrandId(brandId) {
-//   return GuitarModelCollection.find(brandId: brandId)
-// }
+function getModelsByBrandId(brandId) {
+  return GuitarModelCollection.find({brandId})
+}
 
 function getGuitarModel(modelId) {
   return GuitarModelCollection.findById(modelId)
@@ -31,7 +31,7 @@ function addGuitarModel(newModel) {
 }
 
 function updateGuitarModel(modelId, updatedModel) {
-  return GuitarModelCollection.findByIdAndUpdate(modelId, updatedModel)
+  return GuitarModelCollection.findByIdAndUpdate(modelId, updatedModel, {new: true})
 }
 
 function deleteGuitarModel(modelId) {
@@ -44,5 +44,5 @@ module.exports = {
   addGuitarModel,
   updateGuitarModel,
   deleteGuitarModel,
-  // getModelsByBrandId
+  getModelsByBrandId
 }

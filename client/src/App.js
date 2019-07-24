@@ -5,6 +5,7 @@ import SingleBrand from './components/SingleBrand'
 import Header from './components/Header.jsx'
 import './App.css';
 import SingleModel from './components/SingleModel.jsx';
+import ModelsList from './components/ModelsList.jsx'
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
       <Router>
       <Header />
         <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route path="/brands/:brandId" component={SingleBrand}/>
-          <Route path="/models/:modelId" component={SingleModel}/>
+          <Route path="/brands/:brandId/models/:modelId" component={SingleModel} />
+          <Route path="/brands/:brandId/models" component={ModelsList} />
+          <Route path="/brands/:brandId" component={SingleBrand} />
+          <Route exact path="/" component={Home} />
         </Switch>
       </Router>
     </div>

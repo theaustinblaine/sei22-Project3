@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Axios from 'axios'
+import axios from 'axios'
 import NewModelForm from './NewModelForm';
 import {Link} from 'react-router-dom'
 
@@ -20,8 +20,9 @@ export default class models extends Component {
         this.getAllModels()
     }
     
-    getAllModels() {
-        Axios.get('/api/models/')
+    getAllModels = () => {
+        console.log(this.props.match)
+        axios.get(`/api/brands/${this.props.match.params.brandId}/models`)
             .then((res) => {
                 this.setState({models: res.data})
             })
@@ -35,7 +36,6 @@ export default class models extends Component {
             newModel: 
                 {
                     brandId: this.props.brand._id,
-                    // brand: this.props.brand.name
                 }
         })
 
@@ -49,7 +49,7 @@ export default class models extends Component {
     }
 
     handleAddNewForm = () => {
-        Axios.post('/api/models', this.state.newModel)
+        axios.post('/api/models', this.state.newModel)
             .then(() => {
                 this.setState({isAddNewModelFormDisplayed: false})
                 this.getAllModels()
@@ -64,7 +64,7 @@ export default class models extends Component {
                     <h3>
                         <Link 
                             key={model._id} 
-                            to={`/models/${model._id}`}
+                            to={`/brands/${this.props.match.params.brandId}/models/${model._id}`}
                         >
                             {model.model} - {model.price}
                         </Link>

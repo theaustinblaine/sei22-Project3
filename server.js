@@ -51,7 +51,8 @@ app.use(express.static(`${__dirname}/client/build`))
  * the paths defined in the router.
  */
 app.use('/api/brands', guitarBrandRouter)
-app.use('/api/models', guitarModelRouter)
+app.use('/api/brands/:brandId/models', guitarModelRouter)
+// app.use('/api/models', guitarModelRouter)
 
 /* Step 5
  *

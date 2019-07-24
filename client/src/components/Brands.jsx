@@ -51,7 +51,7 @@ export default class Brands extends Component {
 
         let brandsList = this.state.brands.map((brand) => {
             return (
-                <div>
+                <div key={brand._id}>
                     <Link 
                         key={brand._id}
                         to={`/brands/${brand._id}`}

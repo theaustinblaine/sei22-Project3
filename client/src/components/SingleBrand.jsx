@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import {Redirect} from 'react-router-dom'
 import ModelsList from './ModelsList.jsx'
 
@@ -12,7 +12,7 @@ export default class SingleBrand extends Component {
     }
 
     componentDidMount() {
-        Axios.get(`/api/brands/${this.props.match.params.brandId}`)
+        axios.get(`/api/brands/${this.props.match.params.brandId}`)
             .then((res) => {
                 this.setState({brand: res.data})
             })
@@ -20,7 +20,7 @@ export default class SingleBrand extends Component {
     }
 
     getAllModels() {
-        Axios.get('/api/models/')
+        axios.get('/api/models/')
             .then((res) => {
                 this.setState({models: res.data})
             })
@@ -42,7 +42,7 @@ export default class SingleBrand extends Component {
     handleSubmitChanges = (event) => {
         event.preventDefault()
 
-        Axios.put(`/api/brands/${this.state.brand._id}`, this.state.brand)
+        axios.put(`/api/brands/${this.state.brand._id}`, this.state.brand)
             .then((res) => {
                 this.setState({
                     brand: res.data,
@@ -52,7 +52,7 @@ export default class SingleBrand extends Component {
     }
 
     handleDeleteBrand = () => {
-        Axios.delete(`/api/brands/${this.state.brand._id}`)
+        axios.delete(`/api/brands/${this.state.brand._id}`)
             .then(() => {
                 this.setState({redirectToHome: true})
             })
@@ -82,6 +82,7 @@ export default class SingleBrand extends Component {
                 <button onClick={this.handleDeleteBrand}>Delete Brand</button>
                 <ModelsList 
                     brand={this.state.brand}
+                    match={this.props.match}
                 />
             </div>
         );
