@@ -21,7 +21,6 @@ export default class models extends Component {
     }
     
     getAllModels = () => {
-        console.log(this.props.match)
         axios.get(`/api/brands/${this.props.match.params.brandId}/models`)
             .then((res) => {
                 this.setState({models: res.data})

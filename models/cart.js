@@ -10,6 +10,10 @@ function getCartItems() {
   return CartCollection.find()
 }
 
+function getSingleCartItem(cartItem) {
+  return CartCollection.findById(cartItem)
+}
+
 function addCartItem(cartItem) {
   return CartCollection.create(cartItem)
 }
@@ -20,6 +24,7 @@ function removeCartItem(cartItem) {
 
 module.exports = {
   getCartItems,
+  getSingleCartItem,
   addCartItem,
   removeCartItem
 }

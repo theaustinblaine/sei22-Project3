@@ -15,6 +15,16 @@ cartRouter.get('/', (req, res) => {
     })
 })
 
+cartRouter.get('/:cartItemId', (req, res) => {
+  cartApi.getSingleCartItem(req.params.cartItemId)
+    .then((cartItem) => {
+      res.json(cartItem)
+    })
+    .then((err) => {
+      res.send(err)
+    })
+})
+
 cartRouter.post('/', (req, res) => {
   cartApi.addCartItem(req.body)
     .then((cartItem) => {
