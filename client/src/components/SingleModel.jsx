@@ -49,6 +49,16 @@ export default class SingleModel extends Component {
             })
     }
 
+    handleAddToCart = () => {
+        Axios.post('/api/cart', this.state.model)
+            .then(() => {
+                Axios.get('/api/cart')
+                .then(() => {
+                    console.log("Added to Cart")
+                    })
+            })
+    }
+
     render() {
         if(this.state.redirectToHome) {
             return <Redirect to="/"/>
@@ -91,6 +101,7 @@ export default class SingleModel extends Component {
                 <p>{this.state.model.description}</p>
                 <button onClick={this.handleToggleEditForm}>Edit Listing</button>
                 <button onClick={this.handleDeleteModel}>Delete Listing</button>
+                <button onClick={this.handleAddToCart}>Add to Cart</button>
             </div>
         );
     }

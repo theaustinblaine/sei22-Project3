@@ -1,7 +1,7 @@
 const mongoose = require('./connection.js')
 
 const CartSchema = new mongoose.Schema({
-  name: String
+  item: Object
 })
 
 const CartCollection = mongoose.model('Cart', CartSchema)
