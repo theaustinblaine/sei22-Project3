@@ -5,16 +5,6 @@ const guitarModelApi = require('../models/guitar-models.js')
 const guitarModelRouter = express.Router({mergeParams: true})
 
 
-// guitarModelRouter.get('/', (req, res) => {
-//   guitarModelApi.getAllGuitarModels()
-//     .then((models) => {
-//       res.json(models)
-//     })
-//     .catch((err) => {
-//       res.send(err)
-//     })
-// })
-
 guitarModelRouter.get('/', (req, res) => {
   guitarModelApi.getModelsByBrandId(req.params.brandId)
     .then((models) => {
