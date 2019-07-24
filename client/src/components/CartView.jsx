@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import CartItem from './CartItem';
 
 export default class CartView extends Component {
-    state = {
-    }
     
     componentDidMount() {
         this.props.getCartItems()
@@ -19,7 +17,6 @@ export default class CartView extends Component {
                     <CartItem 
                         handleRemoveFromCart={this.handleRemoveFromCart}
                         getCartItems={this.props.getCartItems}
-                        name={item.name}
                         id={item._id}
                     />
                 </div>
@@ -28,7 +25,7 @@ export default class CartView extends Component {
 
         return (
         <div>
-            <h1>CART</h1>
+            <h2>YOUR CART</h2>
             {cartList}
         </div>
         );

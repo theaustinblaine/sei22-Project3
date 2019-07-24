@@ -3,7 +3,8 @@ import Axios from 'axios';
 
 export default class CartItem extends Component {
     state = {
-        cartItem: {}
+        cartItem: {
+        }
     }
 
     componentDidMount() {
@@ -23,7 +24,8 @@ export default class CartItem extends Component {
     render() {
         return (
         <div>
-            <p>{this.state.cartItem.name}</p>
+            <p>{this.state.cartItem.item && this.state.cartItem.item.model}</p>
+            <p>$ {this.state.cartItem.item && this.state.cartItem.item.price}</p>
             <button onClick={this.handleRemoveFromCart}>Remove From Cart</button>
         </div>
         );
