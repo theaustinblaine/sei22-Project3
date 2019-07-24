@@ -18,6 +18,7 @@ export default class CartView extends Component {
                         handleRemoveFromCart={this.handleRemoveFromCart}
                         getCartItems={this.props.getCartItems}
                         id={item._id}
+                        key={item._id}
                     />
                 </div>
             )
