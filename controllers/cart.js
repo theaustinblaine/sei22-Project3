@@ -10,7 +10,7 @@ cartRouter.get('/', (req, res) => {
     .then((cart) => {
       res.json(cart)
     })
-    .then((err) => {
+    .catch((err) => {
       res.send(err)
     })
 })
