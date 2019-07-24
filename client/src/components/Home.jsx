@@ -5,7 +5,7 @@ import SingleModel from './SingleModel.jsx'
 import ModelsList from './ModelsList.jsx'
 import SingleBrand from './SingleBrand.jsx';
 import Brands from './Brands.jsx'
-import {Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 
 export default class Home extends Component {
 
@@ -19,10 +19,12 @@ export default class Home extends Component {
                 <h3>
                     <div>
                     <Header />
-                    <Route path="/brands/:brandId/models/:modelId" component={SingleModel} />
-                    <Route path="/brands/:brandId/models" component={ModelsList} />
-                    <Route path="/brands/:brandId" component={SingleBrand} />
-                    <Route exact path="/" component={Brands} />
+                    <Switch>
+                        <Route path="/brands/:brandId/models/:modelId" component={SingleModel} />
+                        <Route path="/brands/:brandId/models" component={ModelsList} />
+                        <Route path="/brands/:brandId" component={SingleBrand} />
+                        <Route exact path="/" component={Brands} />
+                    </Switch>
                     <CartView />
                     </div>
                 </h3>

@@ -18,7 +18,7 @@ const app = express()
  */
 const { guitarBrandRouter } = require('./controllers/guitar-brands.js')
 const { guitarModelRouter } = require('./controllers/guitar-models.js')
-
+const { cartRouter } = require('./controllers/cart.js')
 
 /* Step 3
  *
@@ -52,7 +52,7 @@ app.use(express.static(`${__dirname}/client/build`))
  */
 app.use('/api/brands', guitarBrandRouter)
 app.use('/api/brands/:brandId/models', guitarModelRouter)
-// app.use('/api/models', guitarModelRouter)
+app.use('/api/cart', cartRouter)
 
 /* Step 5
  *
