@@ -8,7 +8,7 @@ const GuitarModelSchema = new mongoose.Schema({
   brandId: mongoose.Schema.Types.ObjectId,
   price: Number,
   description: String,
-  imagelink: String
+  imageLink: String
 })
 
 const GuitarModelCollection = mongoose.model('Guitar Models', GuitarModelSchema)
