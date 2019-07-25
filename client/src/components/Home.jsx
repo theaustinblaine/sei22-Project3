@@ -7,8 +7,20 @@ import SingleBrand from './SingleBrand.jsx';
 import Brands from './Brands.jsx'
 import {Route, Switch} from 'react-router-dom'
 import Axios from 'axios'
-import 'typeface-roboto'
-import Box from '@material-ui/core/Box';
+import { Container, Row, Col } from 'reactstrap';
+
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem } from 'reactstrap';
 
 export default class Home extends Component {
 
@@ -46,26 +58,35 @@ export default class Home extends Component {
         }
 
         return (
+                // <Header />
             <div>
-                <h3>
-                    <div>
-                    <Box><Header /></Box>
-                    <Switch>
-                        <Box>
-                            <Route path="/brands/:brandId/models/:modelId" render={SingleModelComponent} />
-                            <Route path="/brands/:brandId/models" component={ModelsList} />
-                            <Route path="/brands/:brandId" component={SingleBrand} />
-                            <Route exact path="/" component={Brands} />
-                        </Box>
-                    </Switch>
-                    <Box>
-                        <CartView
-                            cartItems={this.state.cartItems}
-                            getCartItems={this.getCartItems}
-                        />
-                    </Box>
-                    </div>
-                </h3>
+                <Navbar color="dark" dark expand="lg">
+                    <NavbarBrand href="/">Delay</NavbarBrand>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem>
+                            <NavLink href="/">Home</NavLink>
+                        </NavItem>
+                    </Nav>
+                </Navbar>
+
+                <Container>
+                    <Row className="site-body">
+                        <Col xs="auto" className="main-component">
+                            <Switch>
+                                <Route path="/brands/:brandId/models/:modelId" render={SingleModelComponent} />
+                                <Route path="/brands/:brandId/models" component={ModelsList} />
+                                <Route path="/brands/:brandId" component={SingleBrand} />
+                                <Route exact path="/" component={Brands} />
+                            </Switch>
+                        </Col>
+                        <Col xs="3" className="cart-component">
+                            <CartView
+                                cartItems={this.state.cartItems}
+                                getCartItems={this.getCartItems}
+                            />
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         );
     }

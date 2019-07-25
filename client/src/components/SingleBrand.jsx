@@ -85,10 +85,12 @@ export default class SingleBrand extends Component {
                 <button>Submit Changes</button>
             </form>
             :<div>
-                <h1>{this.state.brand.name}</h1>
-                <img src={this.state.brand.imageLink} alt={this.state.brand.name} />
-                <button onClick={this.handleToggleEditForm}>Edit Brand Name</button>
-                <button onClick={this.handleDeleteBrand}>Delete Brand</button>
+                {/* <h1>{this.state.brand.name}</h1> */}
+                <img className="brand-image" src={this.state.brand.imageLink} alt={this.state.brand.name} />
+                <div className="admin-buttons">
+                    <button onClick={this.handleToggleEditForm}>Edit Brand Name</button>
+                    <button onClick={this.handleDeleteBrand}>Delete Brand</button>
+                </div>
                 <ModelsList 
                     brand={this.state.brand}
                     match={this.props.match}

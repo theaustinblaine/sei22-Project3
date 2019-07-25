@@ -80,8 +80,8 @@ export default class SingleModel extends Component {
                     id="image-link"
                     type="text"
                     name="imageLink"
-                    onChange={this.handleInputChange}
                     value={this.state.model.imageLink}
+                    onChange={this.handleInputChange}
                 />
                 <label htmlFor="model-description">Product Description</label>
                 <textarea 
@@ -96,13 +96,15 @@ export default class SingleModel extends Component {
             </form>
             : <div>
                 <h2>{this.state.model.model}</h2> 
-                <h3>${this.state.model.price}</h3>
+                <h3>{this.state.model.price}</h3>
                 <p>{this.state.model.description}</p>
-                <img src="https://www.fmicassets.com/Damroot/ZoomJpg/10001/0110150808_gtr_frt_001_rr.jpg" alt={this.state.model.model} />
-                <button onClick={this.handleToggleEditForm}>Edit Listing</button>
-                <button onClick={this.handleDeleteModel}>Delete Listing</button>
-                <button onClick={() => this.props.handleAddToCart(this.state.model)}>Add to Cart</button>
-            </div>
+                <img className="model-image" src={this.state.model.imageLink} alt={this.state.model.model} />
+                <div className="admin-model-buttons">
+                    <button onClick={this.handleToggleEditForm}>Edit Listing</button>
+                    <button onClick={this.handleDeleteModel}>Delete Listing</button>
+                    <button onClick={() => this.props.handleAddToCart(this.state.model)}>Add to Cart</button>
+                </div>
+        </div>
         );
     }
 }

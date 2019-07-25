@@ -52,13 +52,15 @@ export default class Brands extends Component {
 
         let brandsList = this.state.brands.map((brand) => {
             return (
-                <div key={brand._id}>
+                <div className="brand-listing" key={brand._id}>
                     <Link 
                         key={brand._id}
                         to={`/brands/${brand._id}`}
                     >
-                        {brand.name}
-                        <img src={brand.imageLink} alt={brand.name} />
+                        <div className="brand-container">
+                            <img className="brand-image" src={brand.imageLink} alt={brand.name} />
+                            <p>Click to see Guitars from {brand.name}</p>
+                        </div>
                     </Link>
                 </div>
             )
