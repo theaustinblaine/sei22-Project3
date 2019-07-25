@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import {Redirect} from 'react-router-dom'
 
+
 export default class SingleModel extends Component {
 
     state = {

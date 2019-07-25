@@ -7,6 +7,8 @@ import SingleBrand from './SingleBrand.jsx';
 import Brands from './Brands.jsx'
 import {Route, Switch} from 'react-router-dom'
 import Axios from 'axios'
+import 'typeface-roboto'
+import Box from '@material-ui/core/Box';
 
 export default class Home extends Component {
 
@@ -47,17 +49,21 @@ export default class Home extends Component {
             <div>
                 <h3>
                     <div>
-                    <Header />
+                    <Box><Header /></Box>
                     <Switch>
-                        <Route path="/brands/:brandId/models/:modelId" render={SingleModelComponent} />
-                        <Route path="/brands/:brandId/models" component={ModelsList} />
-                        <Route path="/brands/:brandId" component={SingleBrand} />
-                        <Route exact path="/" component={Brands} />
+                        <Box>
+                            <Route path="/brands/:brandId/models/:modelId" render={SingleModelComponent} />
+                            <Route path="/brands/:brandId/models" component={ModelsList} />
+                            <Route path="/brands/:brandId" component={SingleBrand} />
+                            <Route exact path="/" component={Brands} />
+                        </Box>
                     </Switch>
-                    <CartView
-                        cartItems={this.state.cartItems}
-                        getCartItems={this.getCartItems}
-                    />
+                    <Box>
+                        <CartView
+                            cartItems={this.state.cartItems}
+                            getCartItems={this.getCartItems}
+                        />
+                    </Box>
                     </div>
                 </h3>
             </div>

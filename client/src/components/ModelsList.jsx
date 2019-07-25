@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import NewModelForm from './NewModelForm';
 import {Link} from 'react-router-dom'
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+
+
 
 export default class models extends Component {
 
@@ -60,24 +70,65 @@ export default class models extends Component {
 
         let modelsList = this.state.models.map((model) => {
             return  (
-                <div>
+                <Card style={{width: '250px', height: '300px'}}>
                     <h3>
                         <Link 
                             key={model._id} 
                             to={`/brands/${this.props.match.params.brandId}/models/${model._id}`}
                         >
                             {model.model} - {model.price}
-                            <img src="https://www.fmicassets.com/Damroot/ZoomJpg/10001/0110150808_gtr_frt_001_rr.jpg" alt={model.name}/>
+                            {/* <img src="https://www.fmicassets.com/Damroot/ZoomJpg/10001/0110150808_gtr_frt_001_rr.jpg" alt={model.name}/> */}
                         </Link>
                     </h3>
-                    
-                    <p>{model.description}</p>
-                </div>
+                    <CardMedia
+                        component="img"
+                        alt="Contemplative Reptile"
+                        // height="140"
+                        width="140"
+                        image="https://www.fmicassets.com/Damroot/ZoomJpg/10001/0110150808_gtr_frt_001_rr.jpg" 
+                        alt={model.name}
+                        title="Contemplative Reptile"
+                        />
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {model.description}
+                        </Typography>
+                </Card>
             )
         })
 
         return (
-            this.state.isAddNewModelFormDisplayed
+            <React.Fragment>
+
+                <Card style={{width: '250px'}}>
+                    <CardActionArea>
+                        <CardMedia
+                        component="img"
+                        alt="Contemplative Reptile"
+                        height="140"
+                        image="/static/images/cards/contemplative-reptile.jpg"
+                        title="Contemplative Reptile"
+                        />
+                        <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            Lizard
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                            across all continents except Antarctica
+                        </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button size="small" color="primary">
+                        Share
+                        </Button>
+                        <Button size="small" color="primary">
+                        Learn More
+                        </Button>
+                    </CardActions>
+            </Card>
+
+            {this.state.isAddNewModelFormDisplayed
             ? <NewModelForm 
                 models={this.state.models}
                 newModel={this.state.newModel}
@@ -85,9 +136,12 @@ export default class models extends Component {
                 handleAddNewForm={this.handleAddNewForm}
             />
             : <div>
-                {modelsList}
+                <div class="model-container">
+                    {modelsList}
+                </div>
                 <button onClick={this.handleClickAddNewModelForm}>Add New Model</button>
-            </div>
+            </div>}
+        </React.Fragment>
         );
     }
 }
