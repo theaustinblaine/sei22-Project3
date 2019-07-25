@@ -3,9 +3,9 @@ const mongoose = require('./connection.js')
 const GuitarBrandSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
-    imageLink: String
-  }
+    required: true
+  },
+  imageLink: String
 })
 
 const GuitarBrandCollection = mongoose.model('Guitar Brands', GuitarBrandSchema)

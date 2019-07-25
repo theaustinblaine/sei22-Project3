@@ -79,8 +79,8 @@ export default class SingleBrand extends Component {
                     id="image-link"
                     type="text"
                     name="imageLink"
-                    onChange={this.props.handleInputChange}
-                    // value={this.props.newBrand.imageLink}
+                    onChange={this.handleInputChange}
+                    value={this.state.brand.imageLink}
                 />
                 <button>Submit Changes</button>
             </form>

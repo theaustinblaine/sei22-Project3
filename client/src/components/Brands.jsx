@@ -58,6 +58,7 @@ export default class Brands extends Component {
                         to={`/brands/${brand._id}`}
                     >
                         {brand.name}
+                        <img src={brand.imageLink} alt={brand.name} />
                     </Link>
                 </div>
             )
