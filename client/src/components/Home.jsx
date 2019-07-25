@@ -71,7 +71,7 @@ export default class Home extends Component {
 
                 <Container>
                     <Row className="site-body">
-                        <Col xs="auto" className="main-component">
+                        <Col xs="8" className="main-component">
                             <Switch>
                                 <Route path="/brands/:brandId/models/:modelId" render={SingleModelComponent} />
                                 <Route path="/brands/:brandId/models" component={ModelsList} />
@@ -79,7 +79,7 @@ export default class Home extends Component {
                                 <Route exact path="/" component={Brands} />
                             </Switch>
                         </Col>
-                        <Col xs="3" className="cart-component">
+                        <Col xs="4" className="cart-component">
                             <CartView
                                 cartItems={this.state.cartItems}
                                 getCartItems={this.getCartItems}
