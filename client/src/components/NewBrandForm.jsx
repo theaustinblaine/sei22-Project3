@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 export default class NewBrandForm extends Component {
     render() {
         return (
         <div>
-            <form onSubmit={this.props.handleAddNewForm}>
-                <label htmlFor="brand-name">Brand Name</label>
-                <input 
+            <Form onSubmit={this.props.handleAddNewForm}>
+                <Label htmlFor="brand-name">Brand Name</Label>
+                <Input 
                     id="brand-name"
                     type="text"
                     name="name"
                     onChange={this.props.handleInputChange}
                     value={this.props.newBrand.name}
                 />
-                <label htmlFor="image-link">Image Link</label>
-                <input 
+                <Label htmlFor="image-link">Image Link</Label>
+                <Input 
                     id="image-link"
                     type="text"
                     name="imageLink"
                     onChange={this.props.handleInputChange}
                     value={this.props.newBrand.imageLink}
                 />
-                <input type="submit" value="Add New Brand" />
-            </form>
+                <Input type="submit" value="Add New Brand" />
+            </Form>
         </div>
         );
     }

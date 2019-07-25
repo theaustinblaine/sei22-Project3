@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CartView from './CartView.jsx';
-import Header from './Header.jsx';
 import SingleModel from './SingleModel.jsx'
 import ModelsList from './ModelsList.jsx'
 import SingleBrand from './SingleBrand.jsx';
@@ -10,17 +9,12 @@ import Axios from 'axios'
 import { Container, Row, Col } from 'reactstrap';
 
 import {
-    Collapse,
     Navbar,
-    NavbarToggler,
     NavbarBrand,
     Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+} from 'reactstrap';
 
 export default class Home extends Component {
 
