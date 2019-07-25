@@ -3,7 +3,8 @@ const mongoose = require('./connection.js')
 const GuitarBrandSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    imageLink: String
   }
 })
 

@@ -74,10 +74,19 @@ export default class SingleBrand extends Component {
                     value={this.state.brand.name}
                     onChange={this.handleInputChange}
                 />
+                <label htmlFor="image-link">Image Link</label>
+                <input 
+                    id="image-link"
+                    type="text"
+                    name="imageLink"
+                    onChange={this.props.handleInputChange}
+                    // value={this.props.newBrand.imageLink}
+                />
                 <button>Submit Changes</button>
             </form>
             :<div>
                 <h1>{this.state.brand.name}</h1>
+                <img src={this.state.brand.imageLink} alt={this.state.brand.name} />
                 <button onClick={this.handleToggleEditForm}>Edit Brand Name</button>
                 <button onClick={this.handleDeleteBrand}>Delete Brand</button>
                 <ModelsList 

@@ -13,6 +13,14 @@ export default class NewBrandForm extends Component {
                     onChange={this.props.handleInputChange}
                     value={this.props.newBrand.name}
                 />
+                <label htmlFor="image-link">Image Link</label>
+                <input 
+                    id="image-link"
+                    type="text"
+                    name="imageLink"
+                    onChange={this.props.handleInputChange}
+                    value={this.props.newBrand.imageLink}
+                />
                 <input type="submit" value="Add New Brand" />
             </form>
         </div>

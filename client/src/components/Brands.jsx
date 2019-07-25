@@ -9,7 +9,8 @@ export default class Brands extends Component {
         brands: [],
         isAddNewFormDisplayed: false,
         newBrand: {
-            name: ""
+            name: "",
+            imageLink: ""
         }
     }
 
