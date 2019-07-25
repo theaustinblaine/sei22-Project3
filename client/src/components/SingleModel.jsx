@@ -33,7 +33,7 @@ export default class SingleModel extends Component {
     handleSubmitChanges = (event) => {
         event.preventDefault()
 
-        Axios.put(`/api/models/${this.state.model._id}`, this.state.model)
+        Axios.put(`/api/brands/${this.state.model.brandId}/models/${this.state.model._id}`, this.state.model)
             .then((res) => {
                 this.setState({
                     model: res.data,
@@ -43,7 +43,7 @@ export default class SingleModel extends Component {
     }
 
     handleDeleteModel = () => {
-        Axios.delete(`/api/models/${this.state.model._id}`)
+        Axios.delete(`/api/brands/${this.state.model.brandId}/models/${this.state.model._id}`)
             .then(() => {
                 this.setState({redirectToHome: true})
             })
@@ -74,6 +74,14 @@ export default class SingleModel extends Component {
                     value={this.state.model.price}
                     onChange={this.handleInputChange}
                     />
+                <label htmlFor="image-link">Image Link:</label>
+                <input 
+                    id="image-link"
+                    type="text"
+                    name="imageLink"
+                    onChange={this.handleInputChange}
+                    value={this.state.model.imageLink}
+                />
                 <label htmlFor="model-description">Product Description</label>
                 <textarea 
                     name="description" 
@@ -89,6 +97,7 @@ export default class SingleModel extends Component {
                 <h2>{this.state.model.model}</h2> 
                 <h3>${this.state.model.price}</h3>
                 <p>{this.state.model.description}</p>
+                <img src="https://www.fmicassets.com/Damroot/ZoomJpg/10001/0110150808_gtr_frt_001_rr.jpg" alt={this.state.model.model} />
                 <button onClick={this.handleToggleEditForm}>Edit Listing</button>
                 <button onClick={this.handleDeleteModel}>Delete Listing</button>
                 <button onClick={() => this.props.handleAddToCart(this.state.model)}>Add to Cart</button>

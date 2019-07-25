@@ -12,7 +12,8 @@ export default class models extends Component {
             model: "",
             brandId: "",
             description: "",
-            price: ""
+            price: "",
+            imageLink: ""
         }
     }
 
@@ -48,7 +49,7 @@ export default class models extends Component {
     }
 
     handleAddNewForm = () => {
-        axios.post('/api/models', this.state.newModel)
+        axios.post(`/api/brands/${this.props.brand._id}/models`, this.state.newModel)
             .then(() => {
                 this.setState({isAddNewModelFormDisplayed: false})
                 this.getAllModels()
@@ -66,6 +67,7 @@ export default class models extends Component {
                             to={`/brands/${this.props.match.params.brandId}/models/${model._id}`}
                         >
                             {model.model} - {model.price}
+                            <img src="https://www.fmicassets.com/Damroot/ZoomJpg/10001/0110150808_gtr_frt_001_rr.jpg" alt={model.name}/>
                         </Link>
                     </h3>
                     
