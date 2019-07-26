@@ -60,7 +60,7 @@ export default class models extends Component {
 
         let modelsList = this.state.models.map((model) => {
             return  (
-                <div>
+                <div className="models-list">
                     <h3>
                         <Link 
                             key={model._id} 
@@ -69,10 +69,7 @@ export default class models extends Component {
                             {model.model} - {model.price}
                         </Link>
                     </h3>
-                    
-                        <img className="model-image" src={model.imageLink} alt={model.name}/>
-                        
-                    {model.description}
+                    <img className="model-image" src={model.imageLink} alt={model.name}/>        
                 </div>
             )
         })

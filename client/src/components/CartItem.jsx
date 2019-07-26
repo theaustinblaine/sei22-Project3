@@ -24,8 +24,13 @@ export default class CartItem extends Component {
     render() {
         return (
         <div>
-            <p>{this.state.cartItem.item && this.state.cartItem.item.model}</p>
-            <p>$ {this.state.cartItem.item && this.state.cartItem.item.price}</p>
+            <div className="cart-item">
+                <img src={this.state.cartItem.item && this.state.cartItem.item.imageLink} alt=""/>
+                <div className="cart-data">
+                    <strong>{this.state.cartItem.item && this.state.cartItem.item.model}</strong>
+                    <p>$ {this.state.cartItem.item && this.state.cartItem.item.price}</p>
+            </div>
+        </div>
             <button onClick={this.handleRemoveFromCart}>Remove From Cart</button>
         </div>
         );

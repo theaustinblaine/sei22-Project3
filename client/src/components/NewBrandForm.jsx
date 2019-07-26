@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Form, Label, Input, } from 'reactstrap';
 
 export default class NewBrandForm extends Component {
     render() {

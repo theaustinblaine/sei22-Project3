@@ -26,7 +26,7 @@ export default class CartView extends Component {
 
         return (
         <div>
-            <h2>YOUR CART</h2>
+            <h2 className="cart-heading">CART</h2>
             {cartList}
         </div>
         );
