@@ -7,6 +7,10 @@ body {
   margin: 0 -15px;
 }
 
+.logo {
+  height: 50px;
+}
+
 .site-body {
   border: darkslategray 3px solid;
   width: 100vw;

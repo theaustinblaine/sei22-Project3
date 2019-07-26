@@ -55,7 +55,7 @@ export default class Home extends Component {
                 // <Header />
             <div>
                 <Navbar color="dark" dark expand="lg">
-                    <NavbarBrand href="/">Delay</NavbarBrand>
+                    <NavbarBrand href="/"><img className="logo" src="https://i.imgur.com/y9CFhcZ.png" alt="Logo"/></NavbarBrand>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
                             <NavLink href="/">Home</NavLink>

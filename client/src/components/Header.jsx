@@ -25,7 +25,7 @@ export default class Header extends Component {
         return (
         <div>
             <Navbar color="dark" light expand="sm">
-                <NavbarBrand href="/">Delay</NavbarBrand>
+                <NavbarBrand href="/"><img src="https://i.imgur.com/y9CFhcZ.png" alt="Logo"/></NavbarBrand>
                 <Nav className="ml-auto" navbar>
                     <NavItem>
                         <NavLink href="/">Home</NavLink>
