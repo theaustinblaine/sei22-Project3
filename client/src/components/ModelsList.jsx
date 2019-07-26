@@ -84,7 +84,7 @@ export default class models extends Component {
             />
             : <div>
                     {modelsList}
-            <button onClick={this.handleClickAddNewModelForm}>Add New Model</button>
+            {this.props.isAdminLogin ? <button onClick={this.handleClickAddNewModelForm}>Add New Model</button> : null}
             </div>
         )
     }

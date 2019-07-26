@@ -99,6 +99,7 @@ export default class SingleBrand extends Component {
                 <ModelsList 
                     brand={this.state.brand}
                     match={this.props.match}
+                    isAdminLogin={this.props.isAdminLogin}
                 />
             </div>
         );
