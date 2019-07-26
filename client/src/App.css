@@ -58,7 +58,12 @@ body {
 }
 
 .single-model-component {
-  border: aqua 3px solid;
+  /* border: aqua 3px solid; */
+  margin: 30px 0;
+}
+
+.single-model-component img {
+  border: darkslategray 3px solid;
 }
 
 .model-image {

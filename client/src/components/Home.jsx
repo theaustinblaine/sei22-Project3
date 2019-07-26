@@ -19,7 +19,8 @@ import {
 export default class Home extends Component {
 
     state = {
-        cartItems: []
+        cartItems: [],
+        isAdminLogin: false
     }
 
     componentDidMount() {
@@ -40,12 +41,36 @@ export default class Home extends Component {
             })
     }
 
+    handleToggleAdminLogin = () => {
+        this.setState((state) => {
+            return {isAdminLogin: !state.isAdminLogin}
+        })
+    }
+
     render() {
 
         let SingleModelComponent = (props) => {
             return (
                 <SingleModel
                     handleAddToCart={this.handleAddToCart}
+                    isAdminLogin={this.state.isAdminLogin}
+                    {...props}
+                />
+            )
+        }
+
+        let BrandsListComponent = () => {
+            return (
+                <Brands
+                    isAdminLogin={this.state.isAdminLogin}
+                />
+            )
+        }
+
+        let SingleBrandComponent = (props) => {
+            return (
+                <SingleBrand
+                    isAdminLogin={this.state.isAdminLogin}
                     {...props}
                 />
             )
@@ -56,9 +81,14 @@ export default class Home extends Component {
             <div>
                 <Navbar color="dark" dark expand="lg">
                     <NavbarBrand href="/"><img className="logo" src="https://i.imgur.com/y9CFhcZ.png" alt="Logo"/></NavbarBrand>
-                    <Nav className="mr-auto" navbar>
-                        <NavItem>
+                    <Nav className="mr" navbar>
+                        {/* <NavItem>
                             <NavLink href="/">Home</NavLink>
+                        </NavItem> */}
+                        <NavItem>
+                            <NavLink onClick={this.handleToggleAdminLogin}>
+                                {this.state.isAdminLogin ? 'Admin Logout' : 'Admin Login'}
+                            </NavLink>
                         </NavItem>
                     </Nav>
                 </Navbar>
@@ -69,8 +99,8 @@ export default class Home extends Component {
                             <Switch>
                                 <Route path="/brands/:brandId/models/:modelId" render={SingleModelComponent} />
                                 <Route path="/brands/:brandId/models" component={ModelsList} />
-                                <Route path="/brands/:brandId" component={SingleBrand} />
-                                <Route exact path="/" component={Brands} />
+                                <Route path="/brands/:brandId" render={SingleBrandComponent} />
+                                <Route exact path="/" render={BrandsListComponent} />
                             </Switch>
                         </Col>
                         <Col xs="4" className="cart-component">

@@ -95,15 +95,18 @@ export default class SingleModel extends Component {
                 <input type="submit" value="Update Listing"/> 
             </form>
             : <div className="single-model-component">
-                <h2>{this.state.model.model}</h2> 
+                <h1>{this.state.model.model}</h1> 
                 <h3>${this.state.model.price}</h3>
-                <p>{this.state.model.description}</p>
                 <img className="model-image" src={this.state.model.imageLink} alt={this.state.model.model} />
-                <div className="admin-model-buttons">    
-                    <button onClick={this.handleToggleEditForm}>Edit Listing</button>
-                    <button onClick={this.handleDeleteModel}>Delete Listing</button>
-                </div>
-                <button onClick={() => this.props.handleAddToCart(this.state.model)}>Add to Cart</button>
+                <p>{this.state.model.description}</p>
+                {
+                this.props.isAdminLogin
+                    ?<div className="admin-model-buttons">    
+                        <button onClick={this.handleToggleEditForm}>Edit Listing</button>
+                        <button onClick={this.handleDeleteModel}>Delete Listing</button>
+                    </div>
+                    :<button onClick={() => this.props.handleAddToCart(this.state.model)}>Add to Cart</button>
+                }
         </div>
         );
     }
