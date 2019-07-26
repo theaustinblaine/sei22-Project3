@@ -81,6 +81,11 @@ export default class Home extends Component {
             <div>
                 <Navbar color="dark" dark expand="lg">
                     <NavbarBrand href="/"><img className="logo" src="https://i.imgur.com/y9CFhcZ.png" alt="Logo"/></NavbarBrand>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem>
+                            <NavLink href="/">Home</NavLink>
+                        </NavItem>
+                    </Nav>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
                             <NavLink onClick={this.handleToggleAdminLogin}>
