@@ -75,8 +75,9 @@ export default class Brands extends Component {
                 handleAddNewForm={this.handleAddNewForm}
             />
             : <div>
-                {brandsList}
-
+                <div className="brands-list">
+                    {brandsList}
+                </div>
                 {this.props.isAdminLogin ? <button onClick={this.handleClickAddNew} >Add New Brand</button> : null}
             </div>
         );

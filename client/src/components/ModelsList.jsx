@@ -60,7 +60,7 @@ export default class models extends Component {
 
         let modelsList = this.state.models.map((model) => {
             return  (
-                <div className="models-list">
+                <div className="models-list-item">
                     <h5>
                         <Link 
                             key={model._id} 
@@ -83,7 +83,9 @@ export default class models extends Component {
                 handleAddNewForm={this.handleAddNewForm}
             />
             : <div>
+                <div className="models-list">
                     {modelsList}
+                </div>
             {this.props.isAdminLogin ? <button onClick={this.handleClickAddNewModelForm}>Add New Model</button> : null}
             </div>
         )

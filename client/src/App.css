@@ -27,6 +27,12 @@ body {
   min-width: 400px;
 }
 
+.brands-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .brand-container {
   border: black 3px solid;
   background-color: teal;
@@ -49,7 +55,13 @@ body {
   height: 130px
 }
 
-.models-list {
+.models-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.models-list-item {
   border: black 3px solid;
   border-radius: 15px;
   margin: 30px 10px 10px 10px;
