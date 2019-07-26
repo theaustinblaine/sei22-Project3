@@ -2,7 +2,7 @@
 
 ## Delay
 
-* Deployed App
+* [Deployed App](https://dry-retreat-58068.herokuapp.com/)
 * [Project Board](https://trello.com/b/UAv0IGDT/sei22-project-3)
 
 ## ERD
