@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import {Redirect} from 'react-router-dom'
-
+import { Form, Label, Input, } from 'reactstrap';
 
 export default class SingleModel extends Component {
 
@@ -57,17 +57,17 @@ export default class SingleModel extends Component {
 
         return (
             this.state.isEditFormDisplayed
-            ? <form onSubmit={this.handleSubmitChanges}>
-                <label htmlFor="model-name">Model: </label>
-                <input 
+            ? <Form onSubmit={this.handleSubmitChanges}>
+                <Label htmlFor="model-name">Model: </Label>
+                <Input 
                     id="model-name"
                     type="text"
                     name="model"
                     value={this.state.model.model}
                     onChange={this.handleInputChange}
                 />
-                <label htmlFor="model-price">Price: </label>
-                <input 
+                <Label htmlFor="model-price">Price: </Label>
+                <Input 
                     type="number" 
                     name="price" 
                     id="model-price" 
@@ -75,25 +75,26 @@ export default class SingleModel extends Component {
                     value={this.state.model.price}
                     onChange={this.handleInputChange}
                     />
-                <label htmlFor="image-link">Image Link:</label>
-                <input 
+                <Label htmlFor="image-link">Image Link:</Label>
+                <Input 
                     id="image-link"
                     type="text"
                     name="imageLink"
                     value={this.state.model.imageLink}
                     onChange={this.handleInputChange}
                 />
-                <label htmlFor="model-description">Product Description</label>
-                <textarea 
+                <Label htmlFor="model-description">Product Description</Label>
+                <Input
+                    type="textarea"
                     name="description" 
                     id="model-description" 
                     cols="30" 
                     rows="10"
                     value={this.state.model.description}
                     onChange={this.handleInputChange}
-                ></textarea>
+                />
                 <input type="submit" value="Update Listing"/> 
-            </form>
+            </Form>
             : <div className="single-model-component">
                 <h1>{this.state.model.model}</h1> 
                 <h3>${this.state.model.price}</h3>

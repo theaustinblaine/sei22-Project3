@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom'
 import ModelsList from './ModelsList.jsx'
+import { Form, Label, Input, } from 'reactstrap';
 
 export default class SingleBrand extends Component {
 
@@ -65,32 +66,32 @@ export default class SingleBrand extends Component {
 
         return (
             this.state.isEditFormDisplayed
-            ? <form onSubmit={this.handleSubmitChanges}>
-                <label htmlFor="brand-name">Brand Name</label>
-                <input 
+            ? <Form onSubmit={this.handleSubmitChanges}>
+                <Label htmlFor="brand-name">Brand Name</Label>
+                <Input 
                     id="brand-name"
                     type="text"
                     name="name"
                     value={this.state.brand.name}
                     onChange={this.handleInputChange}
                 />
-                <label htmlFor="image-link">Image Link</label>
-                <input 
+                <Label htmlFor="image-link">Image Link</Label>
+                <Input 
                     id="image-link"
                     type="text"
                     name="imageLink"
                     onChange={this.handleInputChange}
                     value={this.state.brand.imageLink}
                 />
-                <button>Submit Changes</button>
-            </form>
+                <Input type="submit" value="Update Brand" />
+            </Form>
             :<div>
                 <img className="brand-image single-brand-image" src={this.state.brand.imageLink} alt={this.state.brand.name} />
                 
                 {
                     this.props.isAdminLogin
                     ?<div className="admin-buttons">
-                        <button onClick={this.handleToggleEditForm}>Edit Brand Name</button>
+                        <button onClick={this.handleToggleEditForm}>Edit Brand</button>
                         <button onClick={this.handleDeleteBrand}>Delete Brand</button>
                     </div>
                     : null
