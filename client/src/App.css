@@ -52,7 +52,8 @@ body {
 }
 
 .brand-image {
-  height: 130px
+  height: 130px;
+  max-width: 390px;
 }
 
 .models-list{
