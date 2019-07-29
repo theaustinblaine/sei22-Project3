@@ -3,18 +3,11 @@ import CartView from './CartView.jsx';
 import SingleModel from './SingleModel.jsx'
 import ModelsList from './ModelsList.jsx'
 import SingleBrand from './SingleBrand.jsx';
+import Header from './Header.jsx'
 import Brands from './Brands.jsx'
 import {Route, Switch} from 'react-router-dom'
 import Axios from 'axios'
 import { Container, Row, Col } from 'reactstrap';
-
-import {
-    Navbar,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-} from 'reactstrap';
 
 export default class Home extends Component {
 
@@ -77,23 +70,11 @@ export default class Home extends Component {
         }
 
         return (
-                // <Header />
             <div>
-                <Navbar color="dark" dark expand="lg">
-                    <NavbarBrand href="/"><img className="logo" src="https://i.imgur.com/y9CFhcZ.png" alt="Logo"/></NavbarBrand>
-                    <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            <NavLink href="/">Home</NavLink>
-                        </NavItem>
-                    </Nav>
-                    <Nav className="ml-auto" navbar>
-                        <NavItem>
-                            <NavLink onClick={this.handleToggleAdminLogin}>
-                                {this.state.isAdminLogin ? 'Admin Logout' : 'Admin Login'}
-                            </NavLink>
-                        </NavItem>
-                    </Nav>
-                </Navbar>
+                <Header 
+                    isAdminLogin={this.state.isAdminLogin}
+                    handleToggleAdminLogin={this.handleToggleAdminLogin}
+                />
 
                 <Container>
                     <Row className="site-body">

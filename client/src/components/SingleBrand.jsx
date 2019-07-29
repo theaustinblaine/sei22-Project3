@@ -85,6 +85,7 @@ export default class SingleBrand extends Component {
                 />
                 <Input type="submit" value="Update Brand" />
             </Form>
+            
             :<div>
                 <img className="brand-image single-brand-image" src={this.state.brand.imageLink} alt={this.state.brand.name} />
                 
